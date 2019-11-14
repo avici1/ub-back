@@ -4,6 +4,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import videoRoutes from './routes/VideoRoutes';
+import eventRoutes from './routes/EventRoutes';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.use('/api/v1/videos', videoRoutes);
+app.use('/api/v1/events', eventRoutes);
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 

@@ -3,7 +3,13 @@ import database from '../database/models';
 class VideoService {
   static async getAllVideos() {
     try {
-      return await database.Video.findAll();
+      return await database.Video.findAll(
+        {
+          order: [
+            ['createdAt', 'DESC'],
+          ],
+        },
+      );
     } catch (error) {
       throw error;
     }
