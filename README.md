@@ -22,6 +22,40 @@ JWT_KEY=
 
 Then Fill It
 
+After that, Open Postman
+
+In postman:
+
+Request:
+
+1. Logging In: POST request
+
+Request:
+
+```json
+/api/v1/auth/signin
+```
+
+Body:
+
+```json
+{
+    "username": "johndoe",
+    "password": "mypass123"
+}
+```
+
+Response:
+
+```json
+{
+    "status": 200,
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFt"
+    }
+}
+```
+
 
 ## ROUTES
 
@@ -37,8 +71,9 @@ Request:
 
 First:
 - In Postman, head to Headers Tab And assign the following:
-Key:Content-Type
-Value: Application/json
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 
 Body:
 
@@ -78,8 +113,10 @@ Request:
 
 First:
 - In Postman, head to Headers Tab And assign the following:
- Key:Content-Type
- Value: Application/json
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
+
 - Then Head to Body Tab and select raw
 
 Body
@@ -172,6 +209,11 @@ Request:
 ```json
 /api/v1/videos/:id
 ```
+First:
+- In Postman, head to Headers Tab And assign the following:
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 
 Response:
 
@@ -186,10 +228,10 @@ Response:
 1. Posting a blog: POST request
 
 First:
-
-- Open Postman, go to Headers Tab And assign the following:
- Key:Content-Type 
- Value: Application/json
+- In Postman, head to Headers Tab And assign the following:
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 
 Request:
 
@@ -231,8 +273,9 @@ Response:
 
 First:
 - In Postman, head to Headers Tab And assign the following:
-Key: Content-Type
-Value: Application/json
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 
 - Then Head to Body Tab, select raw then write your updates
 
@@ -334,6 +377,13 @@ Request:
 ```json
 /api/v1/blogs/:id
 ```
+
+First:
+- In Postman, head to Headers Tab And assign the following:
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
+
 Response:
 
 ```json
@@ -344,34 +394,6 @@ Response:
 ```
 ### EVENTS  CRUD ROUTES
 
-
-1. Logging In: POST request
-
-Request:
-
-```json
-/api/v1/auth/signin
-```
-
-Body:
-
-```json
-{
-    "username": "johndoe",
-    "password": "mypass123"
-}
-```
-
-Response:
-
-```json
-{
-    "status": 200,
-    "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFt"
-    }
-}
-```
 2. Posting an Event: POST request
 
 ```json
@@ -528,7 +550,10 @@ Response:
 /api/v1/events/:id
 ```
 First:
-- In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
+- In Postman, head to Headers Tab And assign the following:
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 
 
 Response:

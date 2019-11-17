@@ -14,7 +14,7 @@ class Users {
         },
       });
     }
-    return res.status(400).send({ status: 404, message: 'Worng details' });
+    return res.status(400).send({ status: 404, message: 'Wrong details' });
   }
 }
 export default Users;

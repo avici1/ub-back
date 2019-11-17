@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use('/api/v1/videos', videoRoutes);
 app.use('/api/v1/events', eventRoutes);
-app.use('/api/v1/auth', blogRoutes);
+app.use('/api/v1/blogs', blogRoutes);
 app.use('/api/v1/auth', userRoutes);
 
 app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));
