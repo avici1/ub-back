@@ -1,12 +1,13 @@
 # UB RWANDA README
 
-## GUIDE
+## INSTALLATION
 
 ### Installing Dependencies
 
  Install postgreSQL and sequelize dependencies
 `npm install --save sequelize pg pg-hstore`
-Then Run `npm install`
+Then run 
+`npm install`
 
 ### .env
 
@@ -21,42 +22,23 @@ JWT_KEY=
 
 Then Fill It
 
-### Endpoints
 
-1. Logging In: POST request
-```json
-/api/v1/auth/signin
-```
+## ROUTES
 
-Body:
+### VIDEO CRUD ROUTES
 
-```json
-{
-    "username": "johndoe",
-    "password": "mypass123"
-}
-```
+1. Posting a Video: POST request
 
-Response:
-
-```json
-{
-    "status": 200,
-    "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFt"
-    }
-}
-```
-
-2. Posting a Video: POST request
+Request:
 
 ```json
 /api/v1/videos
 ```
 
-Firstly:
-- In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
-- Then Head to Body Tab and select Raw
+First:
+- In Postman, head to Headers Tab And assign the following:
+Key:Content-Type
+Value: Application/json
 
 Body:
 
@@ -86,15 +68,19 @@ Response:
 }
 ```
 
-3. Updating a Video: PUT request
+2. Updating a Video: PUT request
+
+Request:
 
 ```json
 /api/v1/videos/:id
 ```
 
-Firstly:
-- In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
-- Then Head to Body Tab and select Raw
+First:
+- In Postman, head to Headers Tab And assign the following:
+ Key:Content-Type
+ Value: Application/json
+- Then Head to Body Tab and select raw
 
 Body
 
@@ -121,7 +107,7 @@ Response:
 }
 ```
 
-4. Viewing All Videos: GET request
+3. Viewing All Videos: GET request
 
 ```json
 /api/v1/videos
@@ -154,7 +140,9 @@ Response:
 }
 ```
 
-5. Viewing a single Video: GET request
+4. Viewing a single Video: GET request
+
+Request:
 
 ```json
 /api/v1/videos/:id
@@ -177,13 +165,13 @@ Response:
 }
 ```
 
-6. Deleting A Video: DELETE request
+5. Deleting A Video: DELETE request
+
+Request:
+
 ```json
 /api/v1/videos/:id
 ```
-Firstly:
-- In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
-
 
 Response:
 
@@ -193,14 +181,208 @@ Response:
     "message": "Video Deleted Successfully"
 }
 ```
-7. Posting an Event: POST request
+### BLOG CRUD ROUTES
+
+1. Posting a blog: POST request
+
+First:
+
+- Open Postman, go to Headers Tab And assign the following:
+ Key:Content-Type 
+ Value: Application/json
+
+Request:
+
+```json
+/api/v1/blogs
+```
+- Then Head to Body Tab, select raw then write your content
+
+Body:
+
+```json
+{
+	"blogTitle": "Blog Title goes here",
+	"blogDescription": "Blog Description goes here",
+    "blogPost": "Blog Post goes here",
+    "blogPic":"Blog Picture URL"
+}
+```
+Response:
+
+```json
+{
+    "status": "success",
+    "message": "Blog Added!",
+    "data": {
+        "id": 1,
+        "blogTitle": "Blog Title goes here",
+        "blogDescription": "Blog Description",
+        "blogPost": "Blog Post goes here",
+        "blogPic": "Blog Picture URL",
+        "updatedAt": "2019-11-12T10:23:30.865Z",
+        "createdAt": "2019-11-12T10:23:30.865Z"
+
+    }
+}
+```
+
+2. Updating a Blog: PUT request
+
+First:
+- In Postman, head to Headers Tab And assign the following:
+Key: Content-Type
+Value: Application/json
+
+- Then Head to Body Tab, select raw then write your updates
+
+Body:
+```json
+{
+        "blogDescription": "A New Description",
+}
+```
+
+Request:
+
+```json
+/api/v1/blogs/:id
+```
+Response:
+
+```json
+{
+    "message": "Blog Updated",
+    "data": {
+        "id": 1,
+        "blogTitle": "Blog Title goes here",
+        "blogDescription": "A New Description",
+        "blogPost": "Blog Post goes here",
+        "blogPic": "Blog Picture URL",
+        "updatedAt": "2019-11-12T10:23:30.865Z",
+        "createdAt": "2019-11-12T10:23:30.865Z"
+    }
+}
+```
+
+3. Viewing All Blogs: GET request
+
+Request:
+
+```json
+/api/v1/blogs
+
+```
+Response:
+
+```json
+{
+    "status": "success",
+    "message": "All Blogs Retrieved",
+    "data": [
+        {
+            "id": 2,
+            "blogTitle": "RWANDA",
+            "blogDescription": "Visit RWANDA",
+            "blogPost": "Come and tour Rwanda",
+            "blogPic": "https://www.google.com/kjnskjbkjs",
+            "createdAt": "2019-11-12T14:40:47.469Z",
+            "updatedAt": "2019-11-12T14:40:47.469Z"
+        },
+        {
+            "id": 1,
+            "blogTitle": "Blog Title goes here",
+            "blogDescription": "A New Description",
+            "blogPost": "Blog Post goes here",
+            "blogPic": "Blog Picture URL",
+            "createdAt": "2019-11-12T10:23:30.865Z",
+            "updatedAt": "2019-11-12T10:23:30.865Z"
+
+        }
+    ]
+}
+```
+
+4. Viewing a single Blog: GET request
+
+Request:
+
+```json
+/api/v1/blogs/:id
+```
+Response:
+
+```json
+{
+    "message": "Blog Found",
+    "data": {
+        "id": 2,
+        "blogTitle": "RWANDA",
+        "blogDescription": "Visit RWANDA",
+        "blogPost": "Come and tour Rwanda",
+        "blogPic": "https://www.google.com/kjnskjbkjs",
+        "createdAt": "2019-11-12T14:40:47.469Z",
+        "updatedAt": "2019-11-12T14:40:47.469Z"
+        }
+}
+```
+
+5. Deleting A Blog : DELETE request
+
+Request:
+
+```json
+/api/v1/blogs/:id
+```
+Response:
+
+```json
+{
+    "status": "success",
+    "message": "Blog Deleted"
+}
+```
+### EVENTS  CRUD ROUTES
+
+
+1. Logging In: POST request
+
+Request:
+
+```json
+/api/v1/auth/signin
+```
+
+Body:
+
+```json
+{
+    "username": "johndoe",
+    "password": "mypass123"
+}
+```
+
+Response:
+
+```json
+{
+    "status": 200,
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFt"
+    }
+}
+```
+2. Posting an Event: POST request
 
 ```json
 /api/v1/events
 ```
 
-Firstly:
-- In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
+First:
+- In Postman, head to Headers Tab And assign the following:
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 - Then Head to Body Tab and select Raw
 
 Body:
@@ -231,14 +413,17 @@ Response:
     }
 }
 ```
-8. Updating an Event: PUT request
+3. Updating an Event: PUT request
 
 ```json
 /api/v1/events/:id
 ```
 
-Firstly:
-- In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
+First:
+- In Postman, head to Headers Tab And assign the following:
+ Key:Authorization
+ Value: Bearer 
+ and pass in the token
 - Then Head to Body Tab and select Raw
 
 Body
@@ -272,7 +457,7 @@ Response:
     ]
 }
 ```
-9. Viewing All Events: GET request
+4. Viewing All Events: GET request
 
 ```json
 /api/v1/events
@@ -288,7 +473,7 @@ Response:
         {
             "id": 6,
             "eventName": "My Birthday",
-            "eventDescription": "My Birtday will be awseome",
+            "eventDescription": "My Birtday will be awesome",
             "eventDate": "02/Feb/2020",
             "eventImageUrl": "Downloads/mypic.jpg",
             "createdAt": "2019-11-12T10:47:38.284Z",
@@ -297,7 +482,7 @@ Response:
         {
             "id": 2,
             "eventName": "Iwacu Muzika Festival",
-            "eventDescription": "Iwacu Muzika Festival ifasha abaturage kwidagadura",
+            "eventDescription": "Iwacu Muzika Festival. For Citizens",
             "eventDate": "25/Dec/2019",
             "eventImageUrl": "Downloads/IMG_5821.JPG",
             "createdAt": "2019-11-11T20:00:27.615Z",
@@ -306,7 +491,7 @@ Response:
         {
             "id": 1,
             "eventName": "Wasafi Music Festival",
-            "eventDescription": "Festival of launching wasafi album",
+            "eventDescription": "Festival of launching",
             "eventDate": "24/oct/2019",
             "eventImageUrl": "Downloads/alanwalker unity.jpg",
             "createdAt": "2019-11-11T19:56:50.490Z",
@@ -315,7 +500,7 @@ Response:
     ]
 }
 ```
-10. Viewing a single Event: GET request
+5. Viewing a single Event: GET request
 
 ```json
 /api/v1/events/:id
@@ -338,11 +523,11 @@ Response:
     }
 }
 ```
-11. Deleting an Event: DELETE request
+6. Deleting an Event: DELETE request
 ```json
 /api/v1/events/:id
 ```
-Firstly:
+First:
 - In Postman, head to Headers Tab And assign the following, Key:Authorization, Value: Bearer and pass in the token
 
 
@@ -354,3 +539,8 @@ Response:
     "message": "Event Deleted Successfully"
 }
 ```
+
+### Contributors
+
+- Kenny Ruzindana ( VIDEO & EVENTS CRUD ROUTES )
+- Manzi Christian ( BLOG CRUD ROUTES )
